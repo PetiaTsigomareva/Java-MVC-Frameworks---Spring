@@ -1,0 +1,32 @@
+<th:block th:fragment>
+	<div class="jumbotron all-viruses-table">
+		<h1>All Viruses</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Magnitude</th>
+					<th scope="col">ReleaseOn</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="virus,index:${viruses}">
+					<tr>
+						<th scope="row" th:text="${index.count}"></th>
+						<td th:text="${virus.name}"></td>
+						<td th:text="${virus.magnitude}"></td>
+						<td th:text="${virus.releasedOn}"></td>
+						<td><a class="btn re-background" th:href="@{/viruses/edit/{id}(id=${virus.id})}">Edit</a></td>
+						<td><a class="btn re-background" th:href="@{/viruses/delete/{id}(id=${virus.id})}">Delete</a></td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+
+	</div>
+
+
+</th:block>

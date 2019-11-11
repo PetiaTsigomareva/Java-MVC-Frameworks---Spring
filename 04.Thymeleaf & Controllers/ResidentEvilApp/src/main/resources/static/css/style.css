@@ -1,0 +1,15 @@
+.re-background {
+    background-color: #900C45;
+    color: white;
+}
+
+.hr-2 {
+    height: 1px;
+    background-color: black;
+}
+.errors{
+    color: red;
+}
+.all-viruses-table{
+    background-color: white;
+}

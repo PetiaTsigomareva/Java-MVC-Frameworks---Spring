@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<th:block th:insert="~{fragments/head}"></th:block>
+</head>
+<body>
+	<div class="container-fluid">
+		<header>
+			<th:block th:insert="~{fragments/navbar}"></th:block>
+		</header>
+		<main>
+		<div class="container mt-4">
+			<div
+				th:insert="~{fragments/virus-form :: virus-form-fragment(
+        url=@{${T(softuni.residentevil.cofigurations.Constants).ADD_FORM_ACTION}},
+        title=#{virusform.add.title},
+        methodLabel='post',
+        buttonText=#{virusform.add.button}
+        )}"></div>
+		</div>
+		</main>
+	</div>
+</body>
+</html>

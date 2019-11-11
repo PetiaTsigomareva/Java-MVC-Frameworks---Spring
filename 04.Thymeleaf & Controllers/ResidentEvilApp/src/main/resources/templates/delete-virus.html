@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:include="~{fragments/navbar}"></th:block>
+    </header>
+    <main>
+        <div class="container mt-4">
+            <h1>Edit Virus!</h1>
+            <form th:action="@{/viruses/delete/{id}(id=${id})}" method="post" th:object="${virusDeleteViewModel}">
+                <div class="form-group">
+                    <label for="inputVirusName">Name</label>
+                    <input type="text" th:field="*{name}" class="form-control" id="inputVirusName" disabled/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputVirusDescription">Description</label>
+                    <textarea class="form-control" id="inputVirusDescription" rows="3"
+                              th:field="*{description}"disabled></textarea>
+                </div>
+                <div class="form-group" >
+                    <label for="inputVirusSideEffect">Side Effect</label>
+                    <input type="text" class="form-control" id="inputVirusSideEffect" th:field="*{sideEffects}" disabled>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="inputVirusCreator">Creator</label>
+                    <input type="text" class="form-control" id="inputVirusCreator" th:field="*{creator}" disabled>
+
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inputVirusIsDeadly" th:field="*{deadly}">
+                    <label class="form-check-label" for="inputVirusIsDeadly">
+                        Is Deadly?
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="inputVirusIsCurable" th:field="*{curable}">
+                    <label class="form-check-label" for="inputVirusIsCurable">
+                        Is Curable?
+                    </label>
+                </div>
+                <div class="form-check" th:each="mutation:${T(softuni.residentevil.domain.entities.Mutation).values()}">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="inputVirusMutation1"
+                           th:value="${mutation}" th:text="${mutation}" th:field="*{mutation}"disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="SaveHumanity"
+                           value="${????}" disabled>
+                    <label class="form-check-label" for="SaveHumanity">
+                        Save Humanity
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputVirusTurnoverRate">Turnover Rate</label>
+                    <input type="number" class="form-control" id="inputVirusTurnoverRate" th:field="*{turnoverRate}"disabled>
+
+                </div>
+                <div class="form-group" >
+                    <label for="inputVirusHoursUntilTurn">Hours Until Turn</label>
+                    <input type="number" class="form-control" id="inputVirusHoursUntilTurn"
+                           th:field="*{hoursUntilTurn}"disabled>
+
+                </div>
+                <div class="form-group" >
+                    <label for="inputVirusMagnitude">Magnitude</label>
+                    <select class="form-control" id="inputVirusMagnitude" th:field="*{magnitude}"disabled>
+                        <option th:each="magnitude : ${T(softuni.residentevil.domain.entities.Magnitude).values()}"
+                                th:value="${magnitude}"
+                                th:text="${magnitude}">
+                        </option>
+                    </select>
+
+                </div>
+                <div class="form-group" >
+                    <label for="inputVirusReleaseDate">Release Date</label>
+                    <input type="date" class="form-control" id="inputVirusReleaseDate" th:field="*{releasedOn}" disabled>
+
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('capitals')}?'has-danger'">
+                    <label for="inputVirusAffectedCapitals">Affected Capitals</label>
+                    <select class="custom-select" id="inputVirusAffectedCapitals" multiple disabled>
+                        <option th:each="capitalName : ${capitalNames}"
+                                th:selected="${virusCapitals.contains(capitalName.name)}"
+                                th:value="${capitalName.id}"
+                                th:text="${capitalName.name}">
+                        </option>
+                    </select>
+                </div>
+                <button class="btn re-background">Delete</button>
+
+            </form>
+
+        </div>
+    </main>
+</div>
+</body>
+</html>

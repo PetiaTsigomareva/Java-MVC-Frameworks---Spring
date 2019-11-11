@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <th:block th:insert="~{fragments/head}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:insert="~{fragments/navbar}"></th:block>
+    </header>
+    <main>
+        <form id="virus-form" th:action="@{${T(softuni.residentevil.cofigurations.Constants).LOGIN_FORM_ACTION}}"
+              method='post'>
+            <h1 th:text="#{login.title}"></h1>
+
+            <div class="form-group">
+                <label for="inputUserName" th:text="#{username.title}"></label>
+                <input type="text" class="form-control" id="inputUserName" name="username"/>
+
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword" th:text="#{password.title}"></label>
+                <input type="password" class="form-control" id="inputPassword" name="password"/>
+
+            </div>
+            <button class="btn re-background" th:text="#{login.button}" type="submit"></button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

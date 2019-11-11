@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+	<div class="container-fluid">
+		<header>
+			<th:block th:include="~{fragments/navbar}"></th:block>
+		</header>
+		<main class="mt-3">
+		<div class="container">
+			<div class="row d-flex justify-content-around mt-5">
+				<h1 id="title">Your Choice</h1>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input type="radio" class="custom-control-input" id="viruses-radio" name="defaultRadiosExample"> <label class="custom-control-label" for="viruses-radio">Viruses</label>
+				</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input type="radio" class="custom-control-input" id="capitals-radio" name="defaultRadiosExample"> <label class="custom-control-label" for="capitals-radio">Capitals</label>
+				</div>
+			</div>
+			<div id="data-container" class="d-flex justify-content-center mt-5">
+				<h1>Select, what data you want to visualize!</h1>
+			</div>
+		</div>
+		<hr class="re-background hr-2 mt-5" />
+		<script type="text/javascript" src="/js/capital.virus.js">
+			
+		</script> </main>
+	</div>
+</body>
+</html>
